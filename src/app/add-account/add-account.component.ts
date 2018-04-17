@@ -23,7 +23,8 @@ export class AddAccountComponent implements OnInit {
   addNewAccount() {
     let a: IAccount = {name: this.username.nativeElement.value, password: this.password.nativeElement.value};
     this.accountService.addAccount(a);
-    console.log("from add new account component");
-    console.log( this.accountService.accounts);
+    // console.log("from add new account component");
+    // console.log( this.accountService.accounts);
+    this.accountService.userAdded.emit(a);
   }
 }

@@ -6,21 +6,25 @@ import { IAccount } from './account.interface';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [LoggingService]
+  styleUrls: ['./app.component.css']
+  // providers: [LoggingService]
 })
 export class AppComponent implements OnInit, DoCheck  {
   accounts: IAccount[] = [];
   message = " Hello World ";
 
   constructor( private loggingService : LoggingService,
-               private accountService: AccountsService) {}
+               private accountService: AccountsService) {
+                this.accountService.userAdded.subscribe(
+                  (account:IAccount) => alert(account)
+                );
+
+               }
 
 
 
   ngOnInit() {
-    this.loggingService.logMessage(this.message);
-
+    // this.loggingService.logMessage(this.message);
     //const logService = new LoggingService();
     //logService.logMessage(this.message);
 
